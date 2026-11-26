@@ -1,0 +1,7 @@
+/android/build/
+.godot/
+.import/
+bin/
+build/
+/android/build/
+/godot-headers
