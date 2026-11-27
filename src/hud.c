@@ -7,6 +7,7 @@ typedef struct {
     GDExtensionObjectPtr self;
     GDExtensionObjectPtr stats_label;
     GDExtensionObjectPtr banner_label;
+    GDExtensionObjectPtr restart_anchor;
 } HudData;
 
 static void hud_ready(GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
@@ -15,8 +16,12 @@ static void hud_ready(GDExtensionClassInstancePtr p_instance, const GDExtensionC
     HudData *d = (HudData *)p_instance;
     d->stats_label = gd_get_node(d->self, "StatsLabel");
     d->banner_label = gd_get_node(d->self, "BannerLabel");
+    d->restart_anchor = gd_get_node(d->self, "RestartAnchor");
     if (d->banner_label) {
         gd_canvas_set_visible(d->banner_label, false);
+    }
+    if (d->restart_anchor) {
+        gd_canvas_set_visible(d->restart_anchor, false);
     }
 }
 
@@ -32,16 +37,20 @@ static void hud_process(GDExtensionClassInstancePtr p_instance, const GDExtensio
         gd_label_set_text(d->stats_label, buf);
     }
 
+    bool show_end = g_state.level_won || g_state.game_over;
     if (d->banner_label) {
         if (g_state.level_won) {
-            gd_label_set_text(d->banner_label, "COURSE CLEAR!  PRESS R TO PLAY AGAIN");
+            gd_label_set_text(d->banner_label, "COURSE CLEAR!  TAP RETRY OR PRESS R");
             gd_canvas_set_visible(d->banner_label, true);
         } else if (g_state.game_over) {
-            gd_label_set_text(d->banner_label, "GAME OVER!  PRESS R TO RESTART");
+            gd_label_set_text(d->banner_label, "GAME OVER!  TAP RETRY OR PRESS R");
             gd_canvas_set_visible(d->banner_label, true);
         } else {
             gd_canvas_set_visible(d->banner_label, false);
         }
+    }
+    if (d->restart_anchor) {
+        gd_canvas_set_visible(d->restart_anchor, show_end);
     }
 }
 

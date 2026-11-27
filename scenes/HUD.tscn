@@ -1,4 +1,15 @@
-[gd_scene format=3]
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/btn_left.png" id="1"]
+[ext_resource type="Texture2D" path="res://assets/btn_left_pressed.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/btn_right.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/btn_right_pressed.png" id="4"]
+[ext_resource type="Texture2D" path="res://assets/btn_jump.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/btn_jump_pressed.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/btn_run.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/btn_run_pressed.png" id="8"]
+[ext_resource type="Texture2D" path="res://assets/btn_restart.png" id="9"]
+[ext_resource type="Texture2D" path="res://assets/btn_restart_pressed.png" id="10"]
 
 [node name="HUD" type="GameHUD"]
 
@@ -50,6 +61,61 @@ offset_right = 220.0
 offset_bottom = 30.0
 theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
 theme_override_colors/font_shadow_color = Color(0.1, 0.05, 0.05, 0.95)
-text = "COURSE CLEAR!  PRESS R TO PLAY AGAIN"
+text = "COURSE CLEAR!  TAP OR PRESS R TO PLAY AGAIN"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RestartAnchor" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="RestartBtn" type="TouchScreenButton" parent="RestartAnchor"]
+position = Vector2(-90, 34)
+texture_normal = ExtResource("9")
+texture_pressed = ExtResource("10")
+action = &"restart"
+
+[node name="ControlsLeft" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+
+[node name="LeftBtn" type="TouchScreenButton" parent="ControlsLeft"]
+position = Vector2(38, -152)
+texture_normal = ExtResource("1")
+texture_pressed = ExtResource("2")
+passby_press = true
+action = &"move_left"
+
+[node name="RightBtn" type="TouchScreenButton" parent="ControlsLeft"]
+position = Vector2(170, -152)
+texture_normal = ExtResource("3")
+texture_pressed = ExtResource("4")
+passby_press = true
+action = &"move_right"
+
+[node name="ControlsRight" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RunBtn" type="TouchScreenButton" parent="ControlsRight"]
+position = Vector2(-278, -206)
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("8")
+action = &"sprint"
+
+[node name="JumpBtn" type="TouchScreenButton" parent="ControlsRight"]
+position = Vector2(-162, -160)
+texture_normal = ExtResource("5")
+texture_pressed = ExtResource("6")
+action = &"jump"

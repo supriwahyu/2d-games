@@ -362,10 +362,78 @@ def make_scenery():
     fl.save(os.path.join(OUT_DIR, "flowers.png"))
 
 
+def _make_round_btn(size, fill, border, glyph_fn):
+    img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    pad = 3
+    d.rounded_rectangle([pad, pad, size - 1 - pad, size - 1 - pad], radius=24, fill=fill, outline=border, width=3)
+    glyph_fn(d, size)
+    return img
+
+
+def _make_circle_btn(size, fill, border, glyph_fn):
+    img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    pad = 3
+    d.ellipse([pad, pad, size - 1 - pad, size - 1 - pad], fill=fill, outline=border, width=3)
+    glyph_fn(d, size)
+    return img
+
+
+def make_mobile_buttons():
+    def draw_left(d, s):
+        m = s // 2
+        d.polygon([(m - 22, m), (m + 14, m - 24), (m + 14, m + 24)], fill=(255, 255, 255, 235))
+
+    def draw_right(d, s):
+        m = s // 2
+        d.polygon([(m + 22, m), (m - 14, m - 24), (m - 14, m + 24)], fill=(255, 255, 255, 235))
+
+    def draw_jump(d, s):
+        m = s // 2
+        d.polygon([(m, m - 24), (m - 24, m + 10), (m + 24, m + 10)], fill=(255, 250, 210, 245))
+        d.rectangle([m - 9, m + 8, m + 9, m + 24], fill=(255, 250, 210, 245))
+
+    def draw_run(d, s):
+        m = s // 2
+        d.polygon([(m - 2, m), (m - 22, m - 16), (m - 22, m + 16)], fill=(255, 235, 235, 240))
+        d.polygon([(m + 22, m), (m + 2, m - 16), (m + 2, m + 16)], fill=(255, 235, 235, 240))
+
+    dpad_specs = [
+        ("btn_left", 116, (20, 32, 68, 130), (110, 195, 255, 200), (45, 85, 165, 210), draw_left),
+        ("btn_right", 116, (20, 32, 68, 130), (110, 195, 255, 200), (45, 85, 165, 210), draw_right),
+    ]
+    for name, sz, bg, border, bg_pressed, fn in dpad_specs:
+        _make_round_btn(sz, bg, border, fn).save(os.path.join(OUT_DIR, f"{name}.png"))
+        _make_round_btn(sz, bg_pressed, (255, 255, 255, 245), fn).save(os.path.join(OUT_DIR, f"{name}_pressed.png"))
+
+    action_specs = [
+        ("btn_jump", 124, (45, 35, 15, 135), (255, 215, 55, 215), (210, 155, 25, 220), draw_jump),
+        ("btn_run", 96, (60, 20, 28, 135), (255, 110, 110, 210), (195, 55, 65, 215), draw_run),
+    ]
+    for name, sz, bg, border, bg_pressed, fn in action_specs:
+        _make_circle_btn(sz, bg, border, fn).save(os.path.join(OUT_DIR, f"{name}.png"))
+        _make_circle_btn(sz, bg_pressed, (255, 255, 255, 245), fn).save(os.path.join(OUT_DIR, f"{name}_pressed.png"))
+
+    # Restart pill button (180x56)
+    for suffix, bg, border in [
+        ("", (30, 120, 60, 215), (140, 245, 150, 245)),
+        ("_pressed", (55, 175, 90, 240), (255, 255, 255, 255)),
+    ]:
+        r = Image.new("RGBA", (180, 56), (0, 0, 0, 0))
+        d = ImageDraw.Draw(r)
+        d.rounded_rectangle([2, 2, 177, 53], radius=14, fill=bg, outline=border, width=3)
+        # Circular replay arrow icon in center
+        d.arc([72, 12, 104, 44], 35, 325, fill=(255, 255, 255, 245), width=4)
+        d.polygon([(108, 16), (95, 12), (102, 25)], fill=(255, 255, 255, 245))
+        r.save(os.path.join(OUT_DIR, f"btn_restart{suffix}.png"))
+
+
 if __name__ == "__main__":
     make_player()
     make_enemy()
     make_coin()
     make_blocks()
     make_scenery()
+    make_mobile_buttons()
     print("Generated assets in", OUT_DIR)
