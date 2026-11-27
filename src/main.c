@@ -1,106 +1,66 @@
 #include "gd_helper.h"
 #include "game_state.h"
 
-/* Player */
-void *player_constructor(godot_object *instance, void *method_data);
-void player_destructor(godot_object *instance, void *method_data, void *user_data);
-godot_variant player_ready(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args);
-godot_variant player_physics_process(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args);
+/* Class registration functions */
+void player_register(void);
+void enemy_register(void);
+void coin_register(void);
+void qblock_register(void);
+void flagpole_register(void);
+void hud_register(void);
 
-/* Enemy */
-void *enemy_constructor(godot_object *instance, void *method_data);
-void enemy_destructor(godot_object *instance, void *method_data, void *user_data);
-godot_variant enemy_ready(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args);
-godot_variant enemy_physics_process(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args);
+GameState g_state = {
+    .score = 0,
+    .coins = 0,
+    .lives = 3,
+    .level_won = false,
+    .game_over = false,
+    .player_bounce_pending = false,
+    .player_hurt_pending = false
+};
 
-/* Coin */
-void *coin_constructor(godot_object *instance, void *method_data);
-void coin_destructor(godot_object *instance, void *method_data, void *user_data);
-godot_variant coin_ready(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args);
-godot_variant coin_process(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args);
-
-/* QuestionBlock */
-void *qblock_constructor(godot_object *instance, void *method_data);
-void qblock_destructor(godot_object *instance, void *method_data, void *user_data);
-godot_variant qblock_ready(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args);
-godot_variant qblock_process(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args);
-
-/* Flagpole */
-void *flagpole_constructor(godot_object *instance, void *method_data);
-void flagpole_destructor(godot_object *instance, void *method_data, void *user_data);
-godot_variant flagpole_process(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args);
-
-/* GameHUD */
-void *hud_constructor(godot_object *instance, void *method_data);
-void hud_destructor(godot_object *instance, void *method_data, void *user_data);
-godot_variant hud_ready(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args);
-godot_variant hud_process(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args);
-
-static void register_method(void *handle, const char *cls, const char *name,
-                            GDCALLINGCONV godot_variant (*fn)(godot_object *, void *, void *, int, godot_variant **)) {
-    godot_method_attributes attr = { GODOT_METHOD_RPC_MODE_DISABLED };
-    godot_instance_method m = { fn, NULL, NULL };
-    g_nativescript_api->godot_nativescript_register_method(handle, cls, name, attr, m);
+void game_state_reset(void) {
+    g_state.score = 0;
+    g_state.coins = 0;
+    g_state.lives = 3;
+    g_state.level_won = false;
+    g_state.game_over = false;
+    g_state.player_bounce_pending = false;
+    g_state.player_hurt_pending = false;
 }
 
-void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *p_options) {
-    g_api = p_options->api_struct;
-    for (unsigned int i = 0; i < g_api->num_extensions; i++) {
-        if (g_api->extensions[i]->type == GDNATIVE_EXT_NATIVESCRIPT) {
-            g_nativescript_api = (const godot_gdnative_ext_nativescript_api_struct *)g_api->extensions[i];
-            break;
-        }
+static void initialize_mario_module(void *p_userdata, GDExtensionInitializationLevel p_level) {
+    (void)p_userdata;
+    if (p_level != GDEXTENSION_INITIALIZATION_SCENE) {
+        return;
     }
+
+    gd_helper_init_scene();
+    player_register();
+    enemy_register();
+    coin_register();
+    qblock_register();
+    flagpole_register();
+    hud_register();
 }
 
-void GDN_EXPORT godot_gdnative_terminate(godot_gdnative_terminate_options *p_options) {
-    (void)p_options;
-    g_api = NULL;
-    g_nativescript_api = NULL;
+static void deinitialize_mario_module(void *p_userdata, GDExtensionInitializationLevel p_level) {
+    (void)p_userdata;
+    if (p_level != GDEXTENSION_INITIALIZATION_SCENE) {
+        return;
+    }
+    gd_helper_deinit_scene();
 }
 
-void GDN_EXPORT godot_nativescript_init(void *p_handle) {
-    godot_instance_create_func create = { NULL, NULL, NULL };
-    godot_instance_destroy_func destroy = { NULL, NULL, NULL };
+GDExtensionBool mario_gdextension_init(GDExtensionInterfaceGetProcAddress p_get_proc_address,
+                                       GDExtensionClassLibraryPtr p_library,
+                                       GDExtensionInitialization *r_initialization) {
+    gd_helper_init_procs(p_get_proc_address, p_library);
 
-    /* Player */
-    create.create_func = player_constructor;
-    destroy.destroy_func = player_destructor;
-    g_nativescript_api->godot_nativescript_register_class(p_handle, "Player", "KinematicBody2D", create, destroy);
-    register_method(p_handle, "Player", "_ready", player_ready);
-    register_method(p_handle, "Player", "_physics_process", player_physics_process);
+    r_initialization->minimum_initialization_level = GDEXTENSION_INITIALIZATION_SCENE;
+    r_initialization->userdata = NULL;
+    r_initialization->initialize = &initialize_mario_module;
+    r_initialization->deinitialize = &deinitialize_mario_module;
 
-    /* Enemy */
-    create.create_func = enemy_constructor;
-    destroy.destroy_func = enemy_destructor;
-    g_nativescript_api->godot_nativescript_register_class(p_handle, "Enemy", "KinematicBody2D", create, destroy);
-    register_method(p_handle, "Enemy", "_ready", enemy_ready);
-    register_method(p_handle, "Enemy", "_physics_process", enemy_physics_process);
-
-    /* Coin */
-    create.create_func = coin_constructor;
-    destroy.destroy_func = coin_destructor;
-    g_nativescript_api->godot_nativescript_register_class(p_handle, "Coin", "Area2D", create, destroy);
-    register_method(p_handle, "Coin", "_ready", coin_ready);
-    register_method(p_handle, "Coin", "_process", coin_process);
-
-    /* QuestionBlock */
-    create.create_func = qblock_constructor;
-    destroy.destroy_func = qblock_destructor;
-    g_nativescript_api->godot_nativescript_register_class(p_handle, "QuestionBlock", "StaticBody2D", create, destroy);
-    register_method(p_handle, "QuestionBlock", "_ready", qblock_ready);
-    register_method(p_handle, "QuestionBlock", "_process", qblock_process);
-
-    /* Flagpole */
-    create.create_func = flagpole_constructor;
-    destroy.destroy_func = flagpole_destructor;
-    g_nativescript_api->godot_nativescript_register_class(p_handle, "Flagpole", "Area2D", create, destroy);
-    register_method(p_handle, "Flagpole", "_process", flagpole_process);
-
-    /* GameHUD */
-    create.create_func = hud_constructor;
-    destroy.destroy_func = hud_destructor;
-    g_nativescript_api->godot_nativescript_register_class(p_handle, "GameHUD", "CanvasLayer", create, destroy);
-    register_method(p_handle, "GameHUD", "_ready", hud_ready);
-    register_method(p_handle, "GameHUD", "_process", hud_process);
+    return 1;
 }

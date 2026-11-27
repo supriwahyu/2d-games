@@ -1,2111 +1,2194 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=3]
 
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Coin.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/QuestionBlock.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Flagpole.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/block_ground.png" type="Texture" id=7]
-[ext_resource path="res://assets/block_brick.png" type="Texture" id=8]
-[ext_resource path="res://assets/pipe.png" type="Texture" id=9]
-[ext_resource path="res://assets/castle.png" type="Texture" id=10]
-[ext_resource path="res://assets/cloud.png" type="Texture" id=11]
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/Coin.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/QuestionBlock.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/Flagpole.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="6"]
+[ext_resource type="Texture2D" path="res://assets/block_ground.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/block_brick.png" id="8"]
+[ext_resource type="Texture2D" path="res://assets/pipe.png" id="9"]
+[ext_resource type="Texture2D" path="res://assets/castle.png" id="10"]
+[ext_resource type="Texture2D" path="res://assets/cloud.png" id="11"]
+[ext_resource type="Texture2D" path="res://assets/hill.png" id="12"]
+[ext_resource type="Texture2D" path="res://assets/bush.png" id="13"]
+[ext_resource type="Texture2D" path="res://assets/flowers.png" id="14"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(32, 32)
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 24, 32 )
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
+size = Vector2(48, 64)
 
 [node name="Main" type="Node2D"]
 
 [node name="Scenery" type="Node2D" parent="."]
 
-[node name="Cloud0" type="Sprite" parent="Scenery"]
-position = Vector2( 140, 120 )
-texture = ExtResource( 11 )
+[node name="Hill0" type="Sprite2D" parent="Scenery"]
+position = Vector2(160, 464)
+texture = ExtResource("12")
 
-[node name="Cloud1" type="Sprite" parent="Scenery"]
-position = Vector2( 420, 90 )
-texture = ExtResource( 11 )
+[node name="Hill1" type="Sprite2D" parent="Scenery"]
+position = Vector2(680, 464)
+texture = ExtResource("12")
 
-[node name="Cloud2" type="Sprite" parent="Scenery"]
-position = Vector2( 760, 140 )
-texture = ExtResource( 11 )
+[node name="Hill2" type="Sprite2D" parent="Scenery"]
+position = Vector2(1180, 464)
+texture = ExtResource("12")
 
-[node name="Cloud3" type="Sprite" parent="Scenery"]
-position = Vector2( 1120, 100 )
-texture = ExtResource( 11 )
+[node name="Hill3" type="Sprite2D" parent="Scenery"]
+position = Vector2(1620, 464)
+texture = ExtResource("12")
 
-[node name="Cloud4" type="Sprite" parent="Scenery"]
-position = Vector2( 1500, 130 )
-texture = ExtResource( 11 )
+[node name="Hill4" type="Sprite2D" parent="Scenery"]
+position = Vector2(2020, 464)
+texture = ExtResource("12")
 
-[node name="Cloud5" type="Sprite" parent="Scenery"]
-position = Vector2( 1880, 95 )
-texture = ExtResource( 11 )
+[node name="Hill5" type="Sprite2D" parent="Scenery"]
+position = Vector2(2440, 464)
+texture = ExtResource("12")
 
-[node name="Cloud6" type="Sprite" parent="Scenery"]
-position = Vector2( 2260, 125 )
-texture = ExtResource( 11 )
+[node name="Bush0" type="Sprite2D" parent="Scenery"]
+position = Vector2(280, 480)
+texture = ExtResource("13")
 
-[node name="Cloud7" type="Sprite" parent="Scenery"]
-position = Vector2( 2620, 105 )
-texture = ExtResource( 11 )
+[node name="Bush1" type="Sprite2D" parent="Scenery"]
+position = Vector2(520, 480)
+texture = ExtResource("13")
 
-[node name="Castle" type="Sprite" parent="Scenery"]
-position = Vector2( 2720, 448 )
-texture = ExtResource( 10 )
+[node name="Bush2" type="Sprite2D" parent="Scenery"]
+position = Vector2(1020, 480)
+texture = ExtResource("13")
+
+[node name="Bush3" type="Sprite2D" parent="Scenery"]
+position = Vector2(1460, 480)
+texture = ExtResource("13")
+
+[node name="Bush4" type="Sprite2D" parent="Scenery"]
+position = Vector2(1900, 480)
+texture = ExtResource("13")
+
+[node name="Bush5" type="Sprite2D" parent="Scenery"]
+position = Vector2(2320, 480)
+texture = ExtResource("13")
+
+[node name="Flowers0" type="Sprite2D" parent="Scenery"]
+position = Vector2(200, 488)
+texture = ExtResource("14")
+
+[node name="Flowers1" type="Sprite2D" parent="Scenery"]
+position = Vector2(410, 488)
+texture = ExtResource("14")
+
+[node name="Flowers2" type="Sprite2D" parent="Scenery"]
+position = Vector2(720, 488)
+texture = ExtResource("14")
+
+[node name="Flowers3" type="Sprite2D" parent="Scenery"]
+position = Vector2(1110, 488)
+texture = ExtResource("14")
+
+[node name="Flowers4" type="Sprite2D" parent="Scenery"]
+position = Vector2(1300, 488)
+texture = ExtResource("14")
+
+[node name="Flowers5" type="Sprite2D" parent="Scenery"]
+position = Vector2(1550, 488)
+texture = ExtResource("14")
+
+[node name="Flowers6" type="Sprite2D" parent="Scenery"]
+position = Vector2(1960, 488)
+texture = ExtResource("14")
+
+[node name="Flowers7" type="Sprite2D" parent="Scenery"]
+position = Vector2(2220, 488)
+texture = ExtResource("14")
+
+[node name="Cloud0" type="Sprite2D" parent="Scenery"]
+position = Vector2(140, 120)
+texture = ExtResource("11")
+
+[node name="Cloud1" type="Sprite2D" parent="Scenery"]
+position = Vector2(420, 90)
+texture = ExtResource("11")
+
+[node name="Cloud2" type="Sprite2D" parent="Scenery"]
+position = Vector2(760, 140)
+texture = ExtResource("11")
+
+[node name="Cloud3" type="Sprite2D" parent="Scenery"]
+position = Vector2(1120, 100)
+texture = ExtResource("11")
+
+[node name="Cloud4" type="Sprite2D" parent="Scenery"]
+position = Vector2(1500, 130)
+texture = ExtResource("11")
+
+[node name="Cloud5" type="Sprite2D" parent="Scenery"]
+position = Vector2(1880, 95)
+texture = ExtResource("11")
+
+[node name="Cloud6" type="Sprite2D" parent="Scenery"]
+position = Vector2(2260, 125)
+texture = ExtResource("11")
+
+[node name="Cloud7" type="Sprite2D" parent="Scenery"]
+position = Vector2(2620, 105)
+texture = ExtResource("11")
+
+[node name="Castle" type="Sprite2D" parent="Scenery"]
+position = Vector2(2720, 448)
+texture = ExtResource("10")
 
 [node name="Level" type="Node2D" parent="."]
 
 [node name="G_0_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 16, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_0_0"]
-texture = ExtResource( 7 )
+position = Vector2(16, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_0_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_0_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_0_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 16, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_0_1"]
-texture = ExtResource( 7 )
+position = Vector2(16, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_0_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_0_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_0_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 16, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_0_2"]
-texture = ExtResource( 7 )
+position = Vector2(16, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_0_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_0_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_1_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 48, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_1_0"]
-texture = ExtResource( 7 )
+position = Vector2(48, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_1_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_1_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_1_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 48, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_1_1"]
-texture = ExtResource( 7 )
+position = Vector2(48, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_1_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_1_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_1_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 48, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_1_2"]
-texture = ExtResource( 7 )
+position = Vector2(48, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_1_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_1_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_2_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 80, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_2_0"]
-texture = ExtResource( 7 )
+position = Vector2(80, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_2_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_2_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_2_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 80, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_2_1"]
-texture = ExtResource( 7 )
+position = Vector2(80, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_2_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_2_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_2_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 80, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_2_2"]
-texture = ExtResource( 7 )
+position = Vector2(80, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_2_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_2_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_3_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 112, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_3_0"]
-texture = ExtResource( 7 )
+position = Vector2(112, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_3_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_3_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_3_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 112, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_3_1"]
-texture = ExtResource( 7 )
+position = Vector2(112, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_3_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_3_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_3_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 112, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_3_2"]
-texture = ExtResource( 7 )
+position = Vector2(112, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_3_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_3_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_4_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 144, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_4_0"]
-texture = ExtResource( 7 )
+position = Vector2(144, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_4_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_4_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_4_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 144, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_4_1"]
-texture = ExtResource( 7 )
+position = Vector2(144, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_4_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_4_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_4_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 144, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_4_2"]
-texture = ExtResource( 7 )
+position = Vector2(144, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_4_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_4_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_5_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 176, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_5_0"]
-texture = ExtResource( 7 )
+position = Vector2(176, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_5_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_5_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_5_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 176, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_5_1"]
-texture = ExtResource( 7 )
+position = Vector2(176, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_5_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_5_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_5_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 176, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_5_2"]
-texture = ExtResource( 7 )
+position = Vector2(176, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_5_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_5_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_6_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 208, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_6_0"]
-texture = ExtResource( 7 )
+position = Vector2(208, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_6_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_6_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_6_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 208, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_6_1"]
-texture = ExtResource( 7 )
+position = Vector2(208, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_6_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_6_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_6_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 208, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_6_2"]
-texture = ExtResource( 7 )
+position = Vector2(208, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_6_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_6_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_7_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 240, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_7_0"]
-texture = ExtResource( 7 )
+position = Vector2(240, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_7_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_7_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_7_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 240, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_7_1"]
-texture = ExtResource( 7 )
+position = Vector2(240, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_7_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_7_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_7_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 240, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_7_2"]
-texture = ExtResource( 7 )
+position = Vector2(240, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_7_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_7_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_8_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 272, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_8_0"]
-texture = ExtResource( 7 )
+position = Vector2(272, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_8_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_8_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_8_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 272, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_8_1"]
-texture = ExtResource( 7 )
+position = Vector2(272, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_8_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_8_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_8_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 272, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_8_2"]
-texture = ExtResource( 7 )
+position = Vector2(272, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_8_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_8_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_9_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 304, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_9_0"]
-texture = ExtResource( 7 )
+position = Vector2(304, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_9_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_9_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_9_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 304, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_9_1"]
-texture = ExtResource( 7 )
+position = Vector2(304, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_9_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_9_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_9_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 304, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_9_2"]
-texture = ExtResource( 7 )
+position = Vector2(304, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_9_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_9_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_10_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 336, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_10_0"]
-texture = ExtResource( 7 )
+position = Vector2(336, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_10_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_10_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_10_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 336, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_10_1"]
-texture = ExtResource( 7 )
+position = Vector2(336, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_10_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_10_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_10_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 336, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_10_2"]
-texture = ExtResource( 7 )
+position = Vector2(336, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_10_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_10_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_11_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 368, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_11_0"]
-texture = ExtResource( 7 )
+position = Vector2(368, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_11_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_11_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_11_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 368, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_11_1"]
-texture = ExtResource( 7 )
+position = Vector2(368, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_11_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_11_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_11_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 368, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_11_2"]
-texture = ExtResource( 7 )
+position = Vector2(368, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_11_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_11_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_12_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 400, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_12_0"]
-texture = ExtResource( 7 )
+position = Vector2(400, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_12_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_12_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_12_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 400, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_12_1"]
-texture = ExtResource( 7 )
+position = Vector2(400, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_12_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_12_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_12_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 400, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_12_2"]
-texture = ExtResource( 7 )
+position = Vector2(400, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_12_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_12_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_13_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 432, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_13_0"]
-texture = ExtResource( 7 )
+position = Vector2(432, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_13_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_13_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_13_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 432, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_13_1"]
-texture = ExtResource( 7 )
+position = Vector2(432, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_13_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_13_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_13_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 432, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_13_2"]
-texture = ExtResource( 7 )
+position = Vector2(432, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_13_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_13_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_14_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 464, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_14_0"]
-texture = ExtResource( 7 )
+position = Vector2(464, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_14_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_14_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_14_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 464, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_14_1"]
-texture = ExtResource( 7 )
+position = Vector2(464, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_14_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_14_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_14_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 464, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_14_2"]
-texture = ExtResource( 7 )
+position = Vector2(464, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_14_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_14_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_15_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 496, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_15_0"]
-texture = ExtResource( 7 )
+position = Vector2(496, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_15_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_15_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_15_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 496, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_15_1"]
-texture = ExtResource( 7 )
+position = Vector2(496, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_15_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_15_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_15_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 496, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_15_2"]
-texture = ExtResource( 7 )
+position = Vector2(496, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_15_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_15_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_16_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 528, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_16_0"]
-texture = ExtResource( 7 )
+position = Vector2(528, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_16_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_16_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_16_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 528, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_16_1"]
-texture = ExtResource( 7 )
+position = Vector2(528, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_16_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_16_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_16_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 528, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_16_2"]
-texture = ExtResource( 7 )
+position = Vector2(528, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_16_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_16_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_17_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 560, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_17_0"]
-texture = ExtResource( 7 )
+position = Vector2(560, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_17_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_17_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_17_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 560, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_17_1"]
-texture = ExtResource( 7 )
+position = Vector2(560, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_17_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_17_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_17_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 560, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_17_2"]
-texture = ExtResource( 7 )
+position = Vector2(560, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_17_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_17_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_18_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 592, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_18_0"]
-texture = ExtResource( 7 )
+position = Vector2(592, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_18_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_18_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_18_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 592, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_18_1"]
-texture = ExtResource( 7 )
+position = Vector2(592, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_18_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_18_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_18_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 592, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_18_2"]
-texture = ExtResource( 7 )
+position = Vector2(592, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_18_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_18_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_19_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 624, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_19_0"]
-texture = ExtResource( 7 )
+position = Vector2(624, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_19_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_19_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_19_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 624, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_19_1"]
-texture = ExtResource( 7 )
+position = Vector2(624, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_19_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_19_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_19_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 624, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_19_2"]
-texture = ExtResource( 7 )
+position = Vector2(624, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_19_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_19_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_20_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 656, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_20_0"]
-texture = ExtResource( 7 )
+position = Vector2(656, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_20_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_20_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_20_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 656, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_20_1"]
-texture = ExtResource( 7 )
+position = Vector2(656, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_20_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_20_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_20_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 656, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_20_2"]
-texture = ExtResource( 7 )
+position = Vector2(656, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_20_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_20_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_21_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 688, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_21_0"]
-texture = ExtResource( 7 )
+position = Vector2(688, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_21_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_21_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_21_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 688, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_21_1"]
-texture = ExtResource( 7 )
+position = Vector2(688, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_21_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_21_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_21_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 688, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_21_2"]
-texture = ExtResource( 7 )
+position = Vector2(688, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_21_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_21_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_22_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 720, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_22_0"]
-texture = ExtResource( 7 )
+position = Vector2(720, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_22_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_22_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_22_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 720, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_22_1"]
-texture = ExtResource( 7 )
+position = Vector2(720, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_22_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_22_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_22_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 720, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_22_2"]
-texture = ExtResource( 7 )
+position = Vector2(720, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_22_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_22_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_23_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 752, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_23_0"]
-texture = ExtResource( 7 )
+position = Vector2(752, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_23_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_23_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_23_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 752, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_23_1"]
-texture = ExtResource( 7 )
+position = Vector2(752, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_23_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_23_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_23_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 752, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_23_2"]
-texture = ExtResource( 7 )
+position = Vector2(752, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_23_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_23_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_27_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 880, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_27_0"]
-texture = ExtResource( 7 )
+position = Vector2(880, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_27_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_27_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_27_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 880, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_27_1"]
-texture = ExtResource( 7 )
+position = Vector2(880, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_27_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_27_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_27_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 880, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_27_2"]
-texture = ExtResource( 7 )
+position = Vector2(880, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_27_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_27_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_28_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 912, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_28_0"]
-texture = ExtResource( 7 )
+position = Vector2(912, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_28_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_28_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_28_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 912, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_28_1"]
-texture = ExtResource( 7 )
+position = Vector2(912, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_28_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_28_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_28_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 912, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_28_2"]
-texture = ExtResource( 7 )
+position = Vector2(912, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_28_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_28_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_29_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 944, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_29_0"]
-texture = ExtResource( 7 )
+position = Vector2(944, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_29_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_29_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_29_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 944, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_29_1"]
-texture = ExtResource( 7 )
+position = Vector2(944, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_29_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_29_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_29_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 944, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_29_2"]
-texture = ExtResource( 7 )
+position = Vector2(944, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_29_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_29_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_30_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 976, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_30_0"]
-texture = ExtResource( 7 )
+position = Vector2(976, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_30_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_30_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_30_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 976, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_30_1"]
-texture = ExtResource( 7 )
+position = Vector2(976, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_30_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_30_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_30_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 976, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_30_2"]
-texture = ExtResource( 7 )
+position = Vector2(976, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_30_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_30_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_31_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1008, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_31_0"]
-texture = ExtResource( 7 )
+position = Vector2(1008, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_31_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_31_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_31_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1008, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_31_1"]
-texture = ExtResource( 7 )
+position = Vector2(1008, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_31_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_31_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_31_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1008, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_31_2"]
-texture = ExtResource( 7 )
+position = Vector2(1008, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_31_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_31_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_32_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1040, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_32_0"]
-texture = ExtResource( 7 )
+position = Vector2(1040, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_32_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_32_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_32_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1040, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_32_1"]
-texture = ExtResource( 7 )
+position = Vector2(1040, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_32_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_32_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_32_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1040, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_32_2"]
-texture = ExtResource( 7 )
+position = Vector2(1040, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_32_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_32_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_33_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1072, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_33_0"]
-texture = ExtResource( 7 )
+position = Vector2(1072, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_33_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_33_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_33_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1072, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_33_1"]
-texture = ExtResource( 7 )
+position = Vector2(1072, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_33_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_33_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_33_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1072, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_33_2"]
-texture = ExtResource( 7 )
+position = Vector2(1072, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_33_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_33_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_34_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1104, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_34_0"]
-texture = ExtResource( 7 )
+position = Vector2(1104, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_34_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_34_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_34_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1104, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_34_1"]
-texture = ExtResource( 7 )
+position = Vector2(1104, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_34_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_34_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_34_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1104, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_34_2"]
-texture = ExtResource( 7 )
+position = Vector2(1104, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_34_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_34_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_35_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1136, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_35_0"]
-texture = ExtResource( 7 )
+position = Vector2(1136, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_35_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_35_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_35_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1136, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_35_1"]
-texture = ExtResource( 7 )
+position = Vector2(1136, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_35_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_35_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_35_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1136, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_35_2"]
-texture = ExtResource( 7 )
+position = Vector2(1136, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_35_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_35_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_36_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1168, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_36_0"]
-texture = ExtResource( 7 )
+position = Vector2(1168, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_36_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_36_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_36_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1168, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_36_1"]
-texture = ExtResource( 7 )
+position = Vector2(1168, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_36_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_36_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_36_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1168, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_36_2"]
-texture = ExtResource( 7 )
+position = Vector2(1168, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_36_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_36_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_37_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1200, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_37_0"]
-texture = ExtResource( 7 )
+position = Vector2(1200, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_37_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_37_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_37_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1200, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_37_1"]
-texture = ExtResource( 7 )
+position = Vector2(1200, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_37_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_37_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_37_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1200, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_37_2"]
-texture = ExtResource( 7 )
+position = Vector2(1200, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_37_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_37_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_38_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1232, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_38_0"]
-texture = ExtResource( 7 )
+position = Vector2(1232, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_38_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_38_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_38_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1232, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_38_1"]
-texture = ExtResource( 7 )
+position = Vector2(1232, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_38_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_38_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_38_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1232, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_38_2"]
-texture = ExtResource( 7 )
+position = Vector2(1232, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_38_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_38_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_39_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1264, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_39_0"]
-texture = ExtResource( 7 )
+position = Vector2(1264, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_39_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_39_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_39_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1264, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_39_1"]
-texture = ExtResource( 7 )
+position = Vector2(1264, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_39_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_39_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_39_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1264, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_39_2"]
-texture = ExtResource( 7 )
+position = Vector2(1264, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_39_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_39_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_40_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1296, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_40_0"]
-texture = ExtResource( 7 )
+position = Vector2(1296, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_40_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_40_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_40_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1296, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_40_1"]
-texture = ExtResource( 7 )
+position = Vector2(1296, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_40_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_40_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_40_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1296, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_40_2"]
-texture = ExtResource( 7 )
+position = Vector2(1296, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_40_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_40_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_41_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1328, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_41_0"]
-texture = ExtResource( 7 )
+position = Vector2(1328, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_41_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_41_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_41_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1328, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_41_1"]
-texture = ExtResource( 7 )
+position = Vector2(1328, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_41_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_41_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_41_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1328, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_41_2"]
-texture = ExtResource( 7 )
+position = Vector2(1328, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_41_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_41_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_42_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1360, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_42_0"]
-texture = ExtResource( 7 )
+position = Vector2(1360, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_42_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_42_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_42_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1360, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_42_1"]
-texture = ExtResource( 7 )
+position = Vector2(1360, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_42_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_42_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_42_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1360, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_42_2"]
-texture = ExtResource( 7 )
+position = Vector2(1360, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_42_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_42_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_43_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1392, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_43_0"]
-texture = ExtResource( 7 )
+position = Vector2(1392, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_43_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_43_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_43_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1392, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_43_1"]
-texture = ExtResource( 7 )
+position = Vector2(1392, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_43_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_43_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_43_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1392, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_43_2"]
-texture = ExtResource( 7 )
+position = Vector2(1392, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_43_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_43_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_44_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1424, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_44_0"]
-texture = ExtResource( 7 )
+position = Vector2(1424, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_44_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_44_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_44_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1424, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_44_1"]
-texture = ExtResource( 7 )
+position = Vector2(1424, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_44_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_44_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_44_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1424, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_44_2"]
-texture = ExtResource( 7 )
+position = Vector2(1424, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_44_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_44_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_45_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1456, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_45_0"]
-texture = ExtResource( 7 )
+position = Vector2(1456, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_45_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_45_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_45_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1456, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_45_1"]
-texture = ExtResource( 7 )
+position = Vector2(1456, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_45_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_45_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_45_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1456, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_45_2"]
-texture = ExtResource( 7 )
+position = Vector2(1456, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_45_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_45_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_46_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1488, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_46_0"]
-texture = ExtResource( 7 )
+position = Vector2(1488, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_46_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_46_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_46_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1488, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_46_1"]
-texture = ExtResource( 7 )
+position = Vector2(1488, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_46_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_46_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_46_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1488, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_46_2"]
-texture = ExtResource( 7 )
+position = Vector2(1488, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_46_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_46_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_47_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1520, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_47_0"]
-texture = ExtResource( 7 )
+position = Vector2(1520, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_47_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_47_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_47_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1520, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_47_1"]
-texture = ExtResource( 7 )
+position = Vector2(1520, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_47_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_47_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_47_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1520, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_47_2"]
-texture = ExtResource( 7 )
+position = Vector2(1520, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_47_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_47_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_48_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1552, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_48_0"]
-texture = ExtResource( 7 )
+position = Vector2(1552, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_48_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_48_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_48_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1552, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_48_1"]
-texture = ExtResource( 7 )
+position = Vector2(1552, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_48_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_48_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_48_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1552, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_48_2"]
-texture = ExtResource( 7 )
+position = Vector2(1552, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_48_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_48_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_49_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1584, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_49_0"]
-texture = ExtResource( 7 )
+position = Vector2(1584, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_49_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_49_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_49_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1584, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_49_1"]
-texture = ExtResource( 7 )
+position = Vector2(1584, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_49_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_49_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_49_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1584, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_49_2"]
-texture = ExtResource( 7 )
+position = Vector2(1584, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_49_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_49_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_50_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1616, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_50_0"]
-texture = ExtResource( 7 )
+position = Vector2(1616, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_50_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_50_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_50_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1616, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_50_1"]
-texture = ExtResource( 7 )
+position = Vector2(1616, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_50_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_50_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_50_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1616, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_50_2"]
-texture = ExtResource( 7 )
+position = Vector2(1616, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_50_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_50_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_51_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1648, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_51_0"]
-texture = ExtResource( 7 )
+position = Vector2(1648, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_51_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_51_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_51_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1648, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_51_1"]
-texture = ExtResource( 7 )
+position = Vector2(1648, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_51_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_51_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_51_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1648, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_51_2"]
-texture = ExtResource( 7 )
+position = Vector2(1648, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_51_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_51_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_52_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1680, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_52_0"]
-texture = ExtResource( 7 )
+position = Vector2(1680, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_52_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_52_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_52_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1680, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_52_1"]
-texture = ExtResource( 7 )
+position = Vector2(1680, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_52_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_52_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_52_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1680, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_52_2"]
-texture = ExtResource( 7 )
+position = Vector2(1680, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_52_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_52_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_53_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1712, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_53_0"]
-texture = ExtResource( 7 )
+position = Vector2(1712, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_53_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_53_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_53_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1712, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_53_1"]
-texture = ExtResource( 7 )
+position = Vector2(1712, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_53_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_53_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_53_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1712, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_53_2"]
-texture = ExtResource( 7 )
+position = Vector2(1712, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_53_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_53_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_57_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1840, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_57_0"]
-texture = ExtResource( 7 )
+position = Vector2(1840, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_57_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_57_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_57_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1840, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_57_1"]
-texture = ExtResource( 7 )
+position = Vector2(1840, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_57_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_57_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_57_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1840, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_57_2"]
-texture = ExtResource( 7 )
+position = Vector2(1840, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_57_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_57_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_58_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1872, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_58_0"]
-texture = ExtResource( 7 )
+position = Vector2(1872, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_58_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_58_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_58_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1872, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_58_1"]
-texture = ExtResource( 7 )
+position = Vector2(1872, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_58_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_58_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_58_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1872, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_58_2"]
-texture = ExtResource( 7 )
+position = Vector2(1872, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_58_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_58_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_59_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1904, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_59_0"]
-texture = ExtResource( 7 )
+position = Vector2(1904, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_59_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_59_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_59_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1904, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_59_1"]
-texture = ExtResource( 7 )
+position = Vector2(1904, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_59_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_59_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_59_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1904, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_59_2"]
-texture = ExtResource( 7 )
+position = Vector2(1904, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_59_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_59_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_60_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1936, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_60_0"]
-texture = ExtResource( 7 )
+position = Vector2(1936, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_60_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_60_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_60_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1936, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_60_1"]
-texture = ExtResource( 7 )
+position = Vector2(1936, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_60_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_60_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_60_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1936, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_60_2"]
-texture = ExtResource( 7 )
+position = Vector2(1936, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_60_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_60_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_61_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 1968, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_61_0"]
-texture = ExtResource( 7 )
+position = Vector2(1968, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_61_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_61_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_61_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 1968, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_61_1"]
-texture = ExtResource( 7 )
+position = Vector2(1968, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_61_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_61_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_61_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1968, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_61_2"]
-texture = ExtResource( 7 )
+position = Vector2(1968, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_61_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_61_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_62_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2000, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_62_0"]
-texture = ExtResource( 7 )
+position = Vector2(2000, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_62_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_62_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_62_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2000, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_62_1"]
-texture = ExtResource( 7 )
+position = Vector2(2000, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_62_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_62_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_62_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2000, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_62_2"]
-texture = ExtResource( 7 )
+position = Vector2(2000, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_62_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_62_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_63_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2032, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_63_0"]
-texture = ExtResource( 7 )
+position = Vector2(2032, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_63_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_63_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_63_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2032, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_63_1"]
-texture = ExtResource( 7 )
+position = Vector2(2032, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_63_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_63_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_63_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2032, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_63_2"]
-texture = ExtResource( 7 )
+position = Vector2(2032, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_63_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_63_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_64_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2064, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_64_0"]
-texture = ExtResource( 7 )
+position = Vector2(2064, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_64_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_64_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_64_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2064, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_64_1"]
-texture = ExtResource( 7 )
+position = Vector2(2064, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_64_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_64_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_64_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2064, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_64_2"]
-texture = ExtResource( 7 )
+position = Vector2(2064, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_64_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_64_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_65_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2096, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_65_0"]
-texture = ExtResource( 7 )
+position = Vector2(2096, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_65_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_65_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_65_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2096, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_65_1"]
-texture = ExtResource( 7 )
+position = Vector2(2096, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_65_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_65_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_65_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2096, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_65_2"]
-texture = ExtResource( 7 )
+position = Vector2(2096, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_65_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_65_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_66_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2128, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_66_0"]
-texture = ExtResource( 7 )
+position = Vector2(2128, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_66_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_66_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_66_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2128, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_66_1"]
-texture = ExtResource( 7 )
+position = Vector2(2128, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_66_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_66_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_66_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2128, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_66_2"]
-texture = ExtResource( 7 )
+position = Vector2(2128, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_66_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_66_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_67_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2160, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_67_0"]
-texture = ExtResource( 7 )
+position = Vector2(2160, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_67_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_67_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_67_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2160, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_67_1"]
-texture = ExtResource( 7 )
+position = Vector2(2160, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_67_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_67_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_67_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2160, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_67_2"]
-texture = ExtResource( 7 )
+position = Vector2(2160, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_67_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_67_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_68_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2192, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_68_0"]
-texture = ExtResource( 7 )
+position = Vector2(2192, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_68_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_68_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_68_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2192, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_68_1"]
-texture = ExtResource( 7 )
+position = Vector2(2192, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_68_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_68_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_68_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2192, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_68_2"]
-texture = ExtResource( 7 )
+position = Vector2(2192, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_68_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_68_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_69_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2224, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_69_0"]
-texture = ExtResource( 7 )
+position = Vector2(2224, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_69_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_69_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_69_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2224, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_69_1"]
-texture = ExtResource( 7 )
+position = Vector2(2224, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_69_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_69_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_69_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2224, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_69_2"]
-texture = ExtResource( 7 )
+position = Vector2(2224, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_69_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_69_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_70_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2256, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_70_0"]
-texture = ExtResource( 7 )
+position = Vector2(2256, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_70_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_70_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_70_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2256, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_70_1"]
-texture = ExtResource( 7 )
+position = Vector2(2256, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_70_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_70_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_70_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2256, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_70_2"]
-texture = ExtResource( 7 )
+position = Vector2(2256, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_70_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_70_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_71_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2288, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_71_0"]
-texture = ExtResource( 7 )
+position = Vector2(2288, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_71_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_71_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_71_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2288, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_71_1"]
-texture = ExtResource( 7 )
+position = Vector2(2288, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_71_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_71_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_71_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2288, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_71_2"]
-texture = ExtResource( 7 )
+position = Vector2(2288, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_71_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_71_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_72_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2320, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_72_0"]
-texture = ExtResource( 7 )
+position = Vector2(2320, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_72_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_72_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_72_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2320, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_72_1"]
-texture = ExtResource( 7 )
+position = Vector2(2320, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_72_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_72_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_72_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2320, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_72_2"]
-texture = ExtResource( 7 )
+position = Vector2(2320, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_72_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_72_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_73_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2352, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_73_0"]
-texture = ExtResource( 7 )
+position = Vector2(2352, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_73_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_73_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_73_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2352, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_73_1"]
-texture = ExtResource( 7 )
+position = Vector2(2352, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_73_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_73_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_73_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2352, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_73_2"]
-texture = ExtResource( 7 )
+position = Vector2(2352, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_73_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_73_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_74_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2384, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_74_0"]
-texture = ExtResource( 7 )
+position = Vector2(2384, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_74_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_74_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_74_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2384, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_74_1"]
-texture = ExtResource( 7 )
+position = Vector2(2384, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_74_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_74_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_74_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2384, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_74_2"]
-texture = ExtResource( 7 )
+position = Vector2(2384, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_74_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_74_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_75_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2416, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_75_0"]
-texture = ExtResource( 7 )
+position = Vector2(2416, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_75_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_75_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_75_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2416, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_75_1"]
-texture = ExtResource( 7 )
+position = Vector2(2416, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_75_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_75_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_75_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2416, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_75_2"]
-texture = ExtResource( 7 )
+position = Vector2(2416, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_75_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_75_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_76_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2448, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_76_0"]
-texture = ExtResource( 7 )
+position = Vector2(2448, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_76_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_76_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_76_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2448, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_76_1"]
-texture = ExtResource( 7 )
+position = Vector2(2448, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_76_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_76_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_76_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2448, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_76_2"]
-texture = ExtResource( 7 )
+position = Vector2(2448, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_76_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_76_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_77_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2480, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_77_0"]
-texture = ExtResource( 7 )
+position = Vector2(2480, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_77_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_77_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_77_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2480, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_77_1"]
-texture = ExtResource( 7 )
+position = Vector2(2480, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_77_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_77_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_77_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2480, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_77_2"]
-texture = ExtResource( 7 )
+position = Vector2(2480, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_77_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_77_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_78_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2512, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_78_0"]
-texture = ExtResource( 7 )
+position = Vector2(2512, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_78_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_78_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_78_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2512, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_78_1"]
-texture = ExtResource( 7 )
+position = Vector2(2512, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_78_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_78_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_78_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2512, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_78_2"]
-texture = ExtResource( 7 )
+position = Vector2(2512, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_78_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_78_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_79_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2544, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_79_0"]
-texture = ExtResource( 7 )
+position = Vector2(2544, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_79_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_79_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_79_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2544, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_79_1"]
-texture = ExtResource( 7 )
+position = Vector2(2544, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_79_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_79_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_79_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2544, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_79_2"]
-texture = ExtResource( 7 )
+position = Vector2(2544, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_79_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_79_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_80_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2576, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_80_0"]
-texture = ExtResource( 7 )
+position = Vector2(2576, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_80_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_80_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_80_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2576, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_80_1"]
-texture = ExtResource( 7 )
+position = Vector2(2576, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_80_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_80_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_80_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2576, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_80_2"]
-texture = ExtResource( 7 )
+position = Vector2(2576, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_80_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_80_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_81_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2608, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_81_0"]
-texture = ExtResource( 7 )
+position = Vector2(2608, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_81_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_81_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_81_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2608, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_81_1"]
-texture = ExtResource( 7 )
+position = Vector2(2608, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_81_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_81_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_81_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2608, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_81_2"]
-texture = ExtResource( 7 )
+position = Vector2(2608, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_81_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_81_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_82_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2640, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_82_0"]
-texture = ExtResource( 7 )
+position = Vector2(2640, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_82_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_82_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_82_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2640, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_82_1"]
-texture = ExtResource( 7 )
+position = Vector2(2640, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_82_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_82_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_82_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2640, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_82_2"]
-texture = ExtResource( 7 )
+position = Vector2(2640, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_82_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_82_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_83_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2672, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_83_0"]
-texture = ExtResource( 7 )
+position = Vector2(2672, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_83_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_83_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_83_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2672, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_83_1"]
-texture = ExtResource( 7 )
+position = Vector2(2672, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_83_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_83_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_83_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2672, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_83_2"]
-texture = ExtResource( 7 )
+position = Vector2(2672, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_83_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_83_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_84_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2704, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_84_0"]
-texture = ExtResource( 7 )
+position = Vector2(2704, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_84_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_84_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_84_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2704, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_84_1"]
-texture = ExtResource( 7 )
+position = Vector2(2704, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_84_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_84_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_84_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2704, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_84_2"]
-texture = ExtResource( 7 )
+position = Vector2(2704, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_84_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_84_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_85_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2736, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_85_0"]
-texture = ExtResource( 7 )
+position = Vector2(2736, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_85_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_85_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_85_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2736, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_85_1"]
-texture = ExtResource( 7 )
+position = Vector2(2736, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_85_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_85_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_85_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2736, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_85_2"]
-texture = ExtResource( 7 )
+position = Vector2(2736, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_85_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_85_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_86_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2768, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_86_0"]
-texture = ExtResource( 7 )
+position = Vector2(2768, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_86_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_86_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_86_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2768, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_86_1"]
-texture = ExtResource( 7 )
+position = Vector2(2768, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_86_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_86_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_86_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2768, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_86_2"]
-texture = ExtResource( 7 )
+position = Vector2(2768, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_86_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_86_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_87_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2800, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_87_0"]
-texture = ExtResource( 7 )
+position = Vector2(2800, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_87_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_87_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_87_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2800, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_87_1"]
-texture = ExtResource( 7 )
+position = Vector2(2800, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_87_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_87_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_87_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2800, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_87_2"]
-texture = ExtResource( 7 )
+position = Vector2(2800, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_87_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_87_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_88_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2832, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_88_0"]
-texture = ExtResource( 7 )
+position = Vector2(2832, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_88_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_88_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_88_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2832, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_88_1"]
-texture = ExtResource( 7 )
+position = Vector2(2832, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_88_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_88_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_88_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2832, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_88_2"]
-texture = ExtResource( 7 )
+position = Vector2(2832, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_88_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_88_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_89_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 2864, 512 )
-[node name="Sprite" type="Sprite" parent="Level/G_89_0"]
-texture = ExtResource( 7 )
+position = Vector2(2864, 512)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_89_0"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_89_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_89_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 2864, 544 )
-[node name="Sprite" type="Sprite" parent="Level/G_89_1"]
-texture = ExtResource( 7 )
+position = Vector2(2864, 544)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_89_1"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_89_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="G_89_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 2864, 576 )
-[node name="Sprite" type="Sprite" parent="Level/G_89_2"]
-texture = ExtResource( 7 )
+position = Vector2(2864, 576)
+[node name="Sprite2D" type="Sprite2D" parent="Level/G_89_2"]
+texture = ExtResource("7")
 [node name="Col" type="CollisionShape2D" parent="Level/G_89_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 368, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_0"]
-texture = ExtResource( 8 )
+position = Vector2(368, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_0"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_0"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 432, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_1"]
-texture = ExtResource( 8 )
+position = Vector2(432, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_1"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_1"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 496, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_2"]
-texture = ExtResource( 8 )
+position = Vector2(496, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_2"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_2"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_3" type="StaticBody2D" parent="Level"]
-position = Vector2( 1008, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_3"]
-texture = ExtResource( 8 )
+position = Vector2(1008, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_3"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_3"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_4" type="StaticBody2D" parent="Level"]
-position = Vector2( 1040, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_4"]
-texture = ExtResource( 8 )
+position = Vector2(1040, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_4"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_4"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_5" type="StaticBody2D" parent="Level"]
-position = Vector2( 1104, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_5"]
-texture = ExtResource( 8 )
+position = Vector2(1104, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_5"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_5"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_6" type="StaticBody2D" parent="Level"]
-position = Vector2( 1168, 288 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_6"]
-texture = ExtResource( 8 )
+position = Vector2(1168, 288)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_6"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_6"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_7" type="StaticBody2D" parent="Level"]
-position = Vector2( 1200, 288 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_7"]
-texture = ExtResource( 8 )
+position = Vector2(1200, 288)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_7"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_7"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_8" type="StaticBody2D" parent="Level"]
-position = Vector2( 1232, 288 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_8"]
-texture = ExtResource( 8 )
+position = Vector2(1232, 288)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_8"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_8"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_9" type="StaticBody2D" parent="Level"]
-position = Vector2( 1264, 288 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_9"]
-texture = ExtResource( 8 )
+position = Vector2(1264, 288)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_9"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_9"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_10" type="StaticBody2D" parent="Level"]
-position = Vector2( 1488, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_10"]
-texture = ExtResource( 8 )
+position = Vector2(1488, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_10"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_10"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_11" type="StaticBody2D" parent="Level"]
-position = Vector2( 1520, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_11"]
-texture = ExtResource( 8 )
+position = Vector2(1520, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_11"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_11"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_12" type="StaticBody2D" parent="Level"]
-position = Vector2( 1968, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_12"]
-texture = ExtResource( 8 )
+position = Vector2(1968, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_12"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_12"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_13" type="StaticBody2D" parent="Level"]
-position = Vector2( 2032, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_13"]
-texture = ExtResource( 8 )
+position = Vector2(2032, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_13"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_13"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_14" type="StaticBody2D" parent="Level"]
-position = Vector2( 2064, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_14"]
-texture = ExtResource( 8 )
+position = Vector2(2064, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_14"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_14"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_15" type="StaticBody2D" parent="Level"]
-position = Vector2( 2288, 480 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_15"]
-texture = ExtResource( 8 )
+position = Vector2(2288, 480)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_15"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_15"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_16" type="StaticBody2D" parent="Level"]
-position = Vector2( 2320, 480 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_16"]
-texture = ExtResource( 8 )
+position = Vector2(2320, 480)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_16"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_16"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_17" type="StaticBody2D" parent="Level"]
-position = Vector2( 2320, 448 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_17"]
-texture = ExtResource( 8 )
+position = Vector2(2320, 448)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_17"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_17"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_18" type="StaticBody2D" parent="Level"]
-position = Vector2( 2352, 480 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_18"]
-texture = ExtResource( 8 )
+position = Vector2(2352, 480)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_18"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_18"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_19" type="StaticBody2D" parent="Level"]
-position = Vector2( 2352, 448 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_19"]
-texture = ExtResource( 8 )
+position = Vector2(2352, 448)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_19"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_19"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_20" type="StaticBody2D" parent="Level"]
-position = Vector2( 2352, 416 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_20"]
-texture = ExtResource( 8 )
+position = Vector2(2352, 416)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_20"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_20"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_21" type="StaticBody2D" parent="Level"]
-position = Vector2( 2384, 480 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_21"]
-texture = ExtResource( 8 )
+position = Vector2(2384, 480)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_21"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_21"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_22" type="StaticBody2D" parent="Level"]
-position = Vector2( 2384, 448 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_22"]
-texture = ExtResource( 8 )
+position = Vector2(2384, 448)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_22"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_22"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_23" type="StaticBody2D" parent="Level"]
-position = Vector2( 2384, 416 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_23"]
-texture = ExtResource( 8 )
+position = Vector2(2384, 416)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_23"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_23"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Brick_24" type="StaticBody2D" parent="Level"]
-position = Vector2( 2384, 384 )
-[node name="Sprite" type="Sprite" parent="Level/Brick_24"]
-texture = ExtResource( 8 )
+position = Vector2(2384, 384)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Brick_24"]
+texture = ExtResource("8")
 [node name="Col" type="CollisionShape2D" parent="Level/Brick_24"]
-shape = SubResource( 1 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="Pipe_0" type="StaticBody2D" parent="Level"]
-position = Vector2( 608, 464 )
-[node name="Sprite" type="Sprite" parent="Level/Pipe_0"]
-texture = ExtResource( 9 )
+position = Vector2(608, 464)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Pipe_0"]
+texture = ExtResource("9")
 [node name="Col" type="CollisionShape2D" parent="Level/Pipe_0"]
-shape = SubResource( 2 )
+shape = SubResource("RectangleShape2D_2")
 
 [node name="Pipe_1" type="StaticBody2D" parent="Level"]
-position = Vector2( 928, 464 )
-[node name="Sprite" type="Sprite" parent="Level/Pipe_1"]
-texture = ExtResource( 9 )
+position = Vector2(928, 464)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Pipe_1"]
+texture = ExtResource("9")
 [node name="Col" type="CollisionShape2D" parent="Level/Pipe_1"]
-shape = SubResource( 2 )
+shape = SubResource("RectangleShape2D_2")
 
 [node name="Pipe_2" type="StaticBody2D" parent="Level"]
-position = Vector2( 1376, 464 )
-[node name="Sprite" type="Sprite" parent="Level/Pipe_2"]
-texture = ExtResource( 9 )
+position = Vector2(1376, 464)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Pipe_2"]
+texture = ExtResource("9")
 [node name="Col" type="CollisionShape2D" parent="Level/Pipe_2"]
-shape = SubResource( 2 )
+shape = SubResource("RectangleShape2D_2")
 
 [node name="Pipe_3" type="StaticBody2D" parent="Level"]
-position = Vector2( 2144, 464 )
-[node name="Sprite" type="Sprite" parent="Level/Pipe_3"]
-texture = ExtResource( 9 )
+position = Vector2(2144, 464)
+[node name="Sprite2D" type="Sprite2D" parent="Level/Pipe_3"]
+texture = ExtResource("9")
 [node name="Col" type="CollisionShape2D" parent="Level/Pipe_3"]
-shape = SubResource( 2 )
+shape = SubResource("RectangleShape2D_2")
 
-[node name="QBlock_0" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 304, 384 )
+[node name="QBlock_0" parent="Level" instance=ExtResource("4")]
+position = Vector2(304, 384)
 
-[node name="QBlock_1" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 400, 384 )
+[node name="QBlock_1" parent="Level" instance=ExtResource("4")]
+position = Vector2(400, 384)
 
-[node name="QBlock_2" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 464, 384 )
+[node name="QBlock_2" parent="Level" instance=ExtResource("4")]
+position = Vector2(464, 384)
 
-[node name="QBlock_3" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 1072, 384 )
+[node name="QBlock_3" parent="Level" instance=ExtResource("4")]
+position = Vector2(1072, 384)
 
-[node name="QBlock_4" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 1200, 192 )
+[node name="QBlock_4" parent="Level" instance=ExtResource("4")]
+position = Vector2(1200, 192)
 
-[node name="QBlock_5" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 2000, 384 )
+[node name="QBlock_5" parent="Level" instance=ExtResource("4")]
+position = Vector2(2000, 384)
 
-[node name="Coin_0" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 304, 336 )
+[node name="Coin_0" parent="Level" instance=ExtResource("3")]
+position = Vector2(304, 336)
 
-[node name="Coin_1" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 400, 336 )
+[node name="Coin_1" parent="Level" instance=ExtResource("3")]
+position = Vector2(400, 336)
 
-[node name="Coin_2" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 464, 336 )
+[node name="Coin_2" parent="Level" instance=ExtResource("3")]
+position = Vector2(464, 336)
 
-[node name="Coin_3" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 816, 400 )
+[node name="Coin_3" parent="Level" instance=ExtResource("3")]
+position = Vector2(816, 400)
 
-[node name="Coin_4" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 1168, 240 )
+[node name="Coin_4" parent="Level" instance=ExtResource("3")]
+position = Vector2(1168, 240)
 
-[node name="Coin_5" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 1200, 240 )
+[node name="Coin_5" parent="Level" instance=ExtResource("3")]
+position = Vector2(1200, 240)
 
-[node name="Coin_6" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 1232, 240 )
+[node name="Coin_6" parent="Level" instance=ExtResource("3")]
+position = Vector2(1232, 240)
 
-[node name="Coin_7" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 1264, 240 )
+[node name="Coin_7" parent="Level" instance=ExtResource("3")]
+position = Vector2(1264, 240)
 
-[node name="Coin_8" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 1776, 400 )
+[node name="Coin_8" parent="Level" instance=ExtResource("3")]
+position = Vector2(1776, 400)
 
-[node name="Coin_9" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 1968, 336 )
+[node name="Coin_9" parent="Level" instance=ExtResource("3")]
+position = Vector2(1968, 336)
 
-[node name="Coin_10" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 2000, 336 )
+[node name="Coin_10" parent="Level" instance=ExtResource("3")]
+position = Vector2(2000, 336)
 
-[node name="Coin_11" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 2032, 336 )
+[node name="Coin_11" parent="Level" instance=ExtResource("3")]
+position = Vector2(2032, 336)
 
-[node name="Enemy_0" parent="Level" instance=ExtResource( 2 )]
-position = Vector2( 460, 470 )
+[node name="Enemy_0" parent="Level" instance=ExtResource("2")]
+position = Vector2(460, 470)
 
-[node name="Enemy_1" parent="Level" instance=ExtResource( 2 )]
-position = Vector2( 740, 470 )
+[node name="Enemy_1" parent="Level" instance=ExtResource("2")]
+position = Vector2(740, 470)
 
-[node name="Enemy_2" parent="Level" instance=ExtResource( 2 )]
-position = Vector2( 1080, 470 )
+[node name="Enemy_2" parent="Level" instance=ExtResource("2")]
+position = Vector2(1080, 470)
 
-[node name="Enemy_3" parent="Level" instance=ExtResource( 2 )]
-position = Vector2( 1200, 240 )
+[node name="Enemy_3" parent="Level" instance=ExtResource("2")]
+position = Vector2(1200, 240)
 
-[node name="Enemy_4" parent="Level" instance=ExtResource( 2 )]
-position = Vector2( 1520, 470 )
+[node name="Enemy_4" parent="Level" instance=ExtResource("2")]
+position = Vector2(1520, 470)
 
-[node name="Enemy_5" parent="Level" instance=ExtResource( 2 )]
-position = Vector2( 1980, 470 )
+[node name="Enemy_5" parent="Level" instance=ExtResource("2")]
+position = Vector2(1980, 470)
 
-[node name="Enemy_6" parent="Level" instance=ExtResource( 2 )]
-position = Vector2( 2120, 470 )
+[node name="Enemy_6" parent="Level" instance=ExtResource("2")]
+position = Vector2(2120, 470)
 
-[node name="Flagpole" parent="Level" instance=ExtResource( 5 )]
-position = Vector2( 2560, 416 )
+[node name="Flagpole" parent="Level" instance=ExtResource("5")]
+position = Vector2(2560, 416)
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 96, 464 )
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(96, 464)
 
-[node name="HUD" parent="." instance=ExtResource( 6 )]
+[node name="HUD" parent="." instance=ExtResource("6")]

@@ -4,68 +4,68 @@
 #include <stdlib.h>
 
 typedef struct {
+    GDExtensionObjectPtr self;
     Vec2 base_pos;
     float time;
     bool collected;
 } CoinData;
 
-void *coin_constructor(godot_object *instance, void *method_data) {
-    (void)instance;
-    (void)method_data;
-    return calloc(1, sizeof(CoinData));
+static void coin_ready(GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
+    (void)p_args;
+    (void)r_ret;
+    CoinData *d = (CoinData *)p_instance;
+    d->base_pos = gd_get_position(d->self);
 }
 
-void coin_destructor(godot_object *instance, void *method_data, void *user_data) {
-    (void)instance;
-    (void)method_data;
-    free(user_data);
-}
-
-godot_variant coin_ready(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args) {
-    (void)method_data;
-    (void)num_args;
-    (void)args;
-    CoinData *d = (CoinData *)user_data;
-    d->base_pos = gd_get_position(instance);
-    godot_variant ret;
-    g_api->godot_variant_new_nil(&ret);
-    return ret;
-}
-
-godot_variant coin_process(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args) {
-    (void)method_data;
-    CoinData *d = (CoinData *)user_data;
-    float delta = (num_args > 0) ? gd_variant_to_float(args[0]) : 0.016f;
+static void coin_process(GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
+    (void)r_ret;
+    CoinData *d = (CoinData *)p_instance;
+    float delta = p_args ? (float)(*(const double *)p_args[0]) : 0.016f;
 
     if (d->collected) {
-        godot_variant ret;
-        g_api->godot_variant_new_nil(&ret);
-        return ret;
+        return;
     }
 
     d->time += delta * 4.0f;
     Vec2 pos = d->base_pos;
     pos.y += sinf(d->time) * 4.0f;
-    gd_set_position(instance, pos);
+    gd_set_position(d->self, pos);
 
-    godot_array bodies = gd_get_overlapping_bodies(instance);
-    int count = g_api->godot_array_size(&bodies);
+    gd_array bodies = gd_get_overlapping_bodies(d->self);
+    int count = gd_array_size(&bodies);
     for (int i = 0; i < count; i++) {
-        godot_variant v = g_api->godot_array_get(&bodies, i);
-        godot_object *body = g_api->godot_variant_as_object(&v);
+        GDExtensionObjectPtr body = gd_array_get_object(&bodies, i);
         if (body && gd_is_in_group(body, "player")) {
             d->collected = true;
             g_state.coins += 1;
             g_state.score += 100;
-            gd_queue_free(instance);
-            g_api->godot_variant_destroy(&v);
+            gd_queue_free(d->self);
             break;
         }
-        g_api->godot_variant_destroy(&v);
     }
-    g_api->godot_array_destroy(&bodies);
+    gd_array_destroy(&bodies);
+}
 
-    godot_variant ret;
-    g_api->godot_variant_new_nil(&ret);
-    return ret;
+static GDExtensionObjectPtr coin_create(void *p_userdata, GDExtensionBool p_notify_postinitialize) {
+    (void)p_userdata;
+    CoinData *d = (CoinData *)gd_alloc(sizeof(CoinData));
+    d->self = gd_construct_base("Area2D", "Coin", d, p_notify_postinitialize);
+    return d->self;
+}
+
+static void coin_free(void *p_userdata, GDExtensionClassInstancePtr p_instance) {
+    (void)p_userdata;
+    gd_free(p_instance);
+}
+
+static GDExtensionClassCallVirtual coin_get_virtual(void *p_userdata, GDExtensionConstStringNamePtr p_name, uint32_t p_hash) {
+    (void)p_userdata;
+    (void)p_hash;
+    if (gd_str_name_eq(p_name, "_ready")) return &coin_ready;
+    if (gd_str_name_eq(p_name, "_process")) return &coin_process;
+    return NULL;
+}
+
+void coin_register(void) {
+    gd_register_class("Coin", "Area2D", &coin_create, &coin_free, &coin_get_virtual);
 }

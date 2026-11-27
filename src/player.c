@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 typedef struct {
+    GDExtensionObjectPtr self;
     Vec2 velocity;
     Vec2 spawn_pos;
     float coyote_timer;
@@ -13,47 +14,29 @@ typedef struct {
     int anim_frame;
     bool facing_left;
     bool initialized;
-    godot_object *sprite;
-    godot_object *tex_idle;
-    godot_object *tex_run1;
-    godot_object *tex_run2;
-    godot_object *tex_jump;
+    GDExtensionObjectPtr sprite;
+    GDExtensionObjectPtr tex_idle;
+    GDExtensionObjectPtr tex_run1;
+    GDExtensionObjectPtr tex_run2;
+    GDExtensionObjectPtr tex_jump;
 } PlayerData;
 
-void *player_constructor(godot_object *instance, void *method_data) {
-    (void)instance;
-    (void)method_data;
-    PlayerData *d = (PlayerData *)calloc(1, sizeof(PlayerData));
-    return d;
-}
+static void player_ready(GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
+    (void)p_args;
+    (void)r_ret;
+    PlayerData *d = (PlayerData *)p_instance;
 
-void player_destructor(godot_object *instance, void *method_data, void *user_data) {
-    (void)instance;
-    (void)method_data;
-    free(user_data);
-}
-
-godot_variant player_ready(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args) {
-    (void)method_data;
-    (void)num_args;
-    (void)args;
-    PlayerData *d = (PlayerData *)user_data;
-
-    gd_add_to_group(instance, "player");
-    d->spawn_pos = gd_get_position(instance);
-    d->sprite = gd_get_node(instance, "Sprite");
+    gd_add_to_group(d->self, "player");
+    d->spawn_pos = gd_get_position(d->self);
+    d->sprite = gd_get_node(d->self, "Sprite2D");
     d->tex_idle = gd_load_texture("res://assets/player_idle.png");
     d->tex_run1 = gd_load_texture("res://assets/player_run1.png");
     d->tex_run2 = gd_load_texture("res://assets/player_run2.png");
     d->tex_jump = gd_load_texture("res://assets/player_jump.png");
     d->initialized = true;
-
-    godot_variant ret;
-    g_api->godot_variant_new_nil(&ret);
-    return ret;
 }
 
-static void player_die_or_respawn(godot_object *instance, PlayerData *d) {
+static void player_die_or_respawn(PlayerData *d) {
     g_state.lives -= 1;
     if (g_state.lives <= 0) {
         g_state.lives = 0;
@@ -61,26 +44,24 @@ static void player_die_or_respawn(godot_object *instance, PlayerData *d) {
         d->velocity.x = 0.0f;
         d->velocity.y = 0.0f;
     } else {
-        gd_set_position(instance, d->spawn_pos);
+        gd_set_position(d->self, d->spawn_pos);
         d->velocity.x = 0.0f;
         d->velocity.y = 0.0f;
         d->invuln_timer = 1.5f;
     }
 }
 
-godot_variant player_physics_process(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args) {
-    (void)method_data;
-    PlayerData *d = (PlayerData *)user_data;
-    float delta = (num_args > 0) ? gd_variant_to_float(args[0]) : 0.016f;
+static void player_physics_process(GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
+    (void)r_ret;
+    PlayerData *d = (PlayerData *)p_instance;
+    float delta = p_args ? (float)(*(const double *)p_args[0]) : 0.016f;
 
     if (g_state.game_over || g_state.level_won) {
         if (gd_is_action_just_pressed("restart")) {
             game_state_reset();
-            gd_reload_scene(instance);
+            gd_reload_scene(d->self);
         }
-        godot_variant ret;
-        g_api->godot_variant_new_nil(&ret);
-        return ret;
+        return;
     }
 
     if (g_state.player_bounce_pending) {
@@ -91,7 +72,7 @@ godot_variant player_physics_process(godot_object *instance, void *method_data, 
     if (g_state.player_hurt_pending) {
         g_state.player_hurt_pending = false;
         if (d->invuln_timer <= 0.0f) {
-            player_die_or_respawn(instance, d);
+            player_die_or_respawn(d);
         }
     }
 
@@ -131,7 +112,7 @@ godot_variant player_physics_process(godot_object *instance, void *method_data, 
     }
 
     /* Coyote time & jump buffer */
-    bool on_floor = gd_is_on_floor(instance);
+    bool on_floor = gd_is_on_floor(d->self);
     if (on_floor) {
         d->coyote_timer = 0.10f;
     } else {
@@ -160,12 +141,12 @@ godot_variant player_physics_process(godot_object *instance, void *method_data, 
     if (d->velocity.y > 750.0f) d->velocity.y = 750.0f;
 
     Vec2 up = { 0.0f, -1.0f };
-    d->velocity = gd_move_and_slide(instance, d->velocity, up);
+    d->velocity = gd_move_and_slide(d->self, d->velocity, up);
 
     /* Pit fall check */
-    Vec2 pos = gd_get_position(instance);
+    Vec2 pos = gd_get_position(d->self);
     if (pos.y > 720.0f) {
-        player_die_or_respawn(instance, d);
+        player_die_or_respawn(d);
     }
 
     /* Sprite animation */
@@ -184,8 +165,28 @@ godot_variant player_physics_process(godot_object *instance, void *method_data, 
             gd_sprite_set_texture(d->sprite, d->tex_idle);
         }
     }
+}
 
-    godot_variant ret;
-    g_api->godot_variant_new_nil(&ret);
-    return ret;
+static GDExtensionObjectPtr player_create(void *p_userdata, GDExtensionBool p_notify_postinitialize) {
+    (void)p_userdata;
+    PlayerData *d = (PlayerData *)gd_alloc(sizeof(PlayerData));
+    d->self = gd_construct_base("CharacterBody2D", "Player", d, p_notify_postinitialize);
+    return d->self;
+}
+
+static void player_free(void *p_userdata, GDExtensionClassInstancePtr p_instance) {
+    (void)p_userdata;
+    gd_free(p_instance);
+}
+
+static GDExtensionClassCallVirtual player_get_virtual(void *p_userdata, GDExtensionConstStringNamePtr p_name, uint32_t p_hash) {
+    (void)p_userdata;
+    (void)p_hash;
+    if (gd_str_name_eq(p_name, "_ready")) return &player_ready;
+    if (gd_str_name_eq(p_name, "_physics_process")) return &player_physics_process;
+    return NULL;
+}
+
+void player_register(void) {
+    gd_register_class("Player", "CharacterBody2D", &player_create, &player_free, &player_get_virtual);
 }

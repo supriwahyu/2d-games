@@ -1,0 +1,11 @@
+[configuration]
+
+entry_symbol = "mario_gdextension_init"
+compatibility_minimum = "4.7"
+
+[libraries]
+
+linux.debug.x86_64 = "res://bin/libmario_game.so"
+linux.release.x86_64 = "res://bin/libmario_game.so"
+android.debug.arm64 = "res://bin/libmario_game.android.arm64.so"
+android.release.arm64 = "res://bin/libmario_game.android.arm64.so"

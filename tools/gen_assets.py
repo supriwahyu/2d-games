@@ -288,33 +288,78 @@ def make_scenery():
     # Castle 96x96
     c = Image.new("RGBA", (96, 96), (0, 0, 0, 0))
     d = ImageDraw.Draw(c)
-    stone = (175, 110, 80, 255)
+    stone = (185, 115, 82, 255)
+    stone_hi = (210, 140, 102, 255)
     dark = (95, 55, 40, 255)
     # Main keep
     d.rectangle([12, 36, 83, 95], fill=stone, outline=dark, width=2)
+    d.line([14, 38, 81, 38], fill=stone_hi)
     # Top battlements
     for bx in range(12, 84, 16):
         d.rectangle([bx, 26, bx + 10, 36], fill=stone, outline=dark, width=2)
     # Center tower
-    d.rectangle([28, 12, 67, 36], fill=stone, outline=dark, width=2)
+    d.rectangle([28, 16, 67, 36], fill=stone, outline=dark, width=2)
     for bx in range(28, 68, 14):
-        d.rectangle([bx, 4, bx + 9, 12], fill=stone, outline=dark, width=2)
+        d.rectangle([bx, 8, bx + 9, 16], fill=stone, outline=dark, width=2)
+    # Castle roof pennant
+    d.line([47, 0, 47, 8], fill=(230, 230, 230, 255))
+    d.polygon([(48, 0), (60, 4), (48, 8)], fill=(235, 50, 50, 255))
     # Door
     d.rectangle([38, 64, 57, 95], fill=(35, 25, 25, 255))
     d.pieslice([38, 54, 57, 74], 180, 360, fill=(35, 25, 25, 255))
-    # Windows
-    d.rectangle([22, 48, 30, 58], fill=(35, 25, 25, 255))
-    d.rectangle([65, 48, 73, 58], fill=(35, 25, 25, 255))
+    # Windows with warm torchlight glow
+    d.rectangle([22, 48, 30, 58], fill=(255, 195, 70, 255), outline=(35, 25, 25, 255))
+    d.rectangle([65, 48, 73, 58], fill=(255, 195, 70, 255), outline=(35, 25, 25, 255))
     c.save(os.path.join(OUT_DIR, "castle.png"))
 
     # Cloud 64x32
     cl = Image.new("RGBA", (64, 32), (0, 0, 0, 0))
     d = ImageDraw.Draw(cl)
-    d.ellipse([8, 10, 32, 30], fill=(255, 255, 255, 240))
-    d.ellipse([20, 4, 46, 30], fill=(255, 255, 255, 240))
-    d.ellipse([34, 10, 58, 30], fill=(255, 255, 255, 240))
-    d.rectangle([14, 18, 52, 30], fill=(255, 255, 255, 240))
+    # Soft blue-tinted shadow base
+    d.ellipse([8, 12, 32, 31], fill=(210, 230, 250, 240))
+    d.ellipse([20, 6, 46, 31], fill=(210, 230, 250, 240))
+    d.ellipse([34, 12, 58, 31], fill=(210, 230, 250, 240))
+    d.rectangle([14, 20, 52, 31], fill=(210, 230, 250, 240))
+    # Bright white top
+    d.ellipse([8, 9, 32, 27], fill=(255, 255, 255, 245))
+    d.ellipse([20, 3, 46, 27], fill=(255, 255, 255, 245))
+    d.ellipse([34, 9, 58, 27], fill=(255, 255, 255, 245))
+    d.rectangle([14, 16, 52, 27], fill=(255, 255, 255, 245))
     cl.save(os.path.join(OUT_DIR, "cloud.png"))
+
+    # Rolling green hill 128x64
+    h = Image.new("RGBA", (128, 64), (0, 0, 0, 0))
+    d = ImageDraw.Draw(h)
+    d.pieslice([0, 4, 127, 124], 180, 360, fill=(52, 168, 72, 255), outline=(28, 105, 42, 255), width=2)
+    d.arc([4, 8, 123, 120], 195, 345, fill=(105, 215, 105, 255), width=3)
+    for sx, sy, sw, sh in [(36, 34, 10, 14), (72, 26, 12, 16), (92, 42, 8, 10)]:
+        d.ellipse([sx, sy, sx + sw, sy + sh], fill=(35, 125, 50, 255))
+    h.save(os.path.join(OUT_DIR, "hill.png"))
+
+    # Lush bush 96x32
+    bu = Image.new("RGBA", (96, 32), (0, 0, 0, 0))
+    d = ImageDraw.Draw(bu)
+    d.ellipse([4, 10, 36, 31], fill=(40, 165, 60, 255), outline=(20, 95, 35, 255), width=2)
+    d.ellipse([58, 10, 90, 31], fill=(40, 165, 60, 255), outline=(20, 95, 35, 255), width=2)
+    d.ellipse([24, 2, 70, 31], fill=(55, 190, 75, 255), outline=(20, 95, 35, 255), width=2)
+    d.rectangle([16, 20, 78, 31], fill=(40, 165, 60, 255))
+    d.ellipse([32, 6, 56, 18], fill=(115, 230, 110, 255))
+    bu.save(os.path.join(OUT_DIR, "bush.png"))
+
+    # Colorful flower patch 32x16
+    fl = Image.new("RGBA", (32, 16), (0, 0, 0, 0))
+    d = ImageDraw.Draw(fl)
+    flowers = [
+        (5, 4, (245, 65, 85, 255)),    # Red/coral
+        (15, 2, (255, 220, 50, 255)),  # Yellow
+        (25, 5, (235, 110, 220, 255)), # Pink/magenta
+    ]
+    for fx, fy, fcol in flowers:
+        d.line([fx, fy + 3, fx, 15], fill=(40, 155, 50, 255), width=2)
+        d.rectangle([fx - 2, fy + 6, fx - 1, fy + 7], fill=(75, 200, 75, 255))
+        d.ellipse([fx - 3, fy - 2, fx + 3, fy + 4], fill=fcol)
+        d.point((fx, fy + 1), fill=(255, 250, 200, 255))
+    fl.save(os.path.join(OUT_DIR, "flowers.png"))
 
 
 if __name__ == "__main__":

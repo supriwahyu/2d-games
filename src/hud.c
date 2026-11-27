@@ -4,43 +4,26 @@
 #include <stdlib.h>
 
 typedef struct {
-    godot_object *stats_label;
-    godot_object *banner_label;
+    GDExtensionObjectPtr self;
+    GDExtensionObjectPtr stats_label;
+    GDExtensionObjectPtr banner_label;
 } HudData;
 
-void *hud_constructor(godot_object *instance, void *method_data) {
-    (void)instance;
-    (void)method_data;
-    return calloc(1, sizeof(HudData));
-}
-
-void hud_destructor(godot_object *instance, void *method_data, void *user_data) {
-    (void)instance;
-    (void)method_data;
-    free(user_data);
-}
-
-godot_variant hud_ready(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args) {
-    (void)method_data;
-    (void)num_args;
-    (void)args;
-    HudData *d = (HudData *)user_data;
-    d->stats_label = gd_get_node(instance, "StatsLabel");
-    d->banner_label = gd_get_node(instance, "BannerLabel");
+static void hud_ready(GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
+    (void)p_args;
+    (void)r_ret;
+    HudData *d = (HudData *)p_instance;
+    d->stats_label = gd_get_node(d->self, "StatsLabel");
+    d->banner_label = gd_get_node(d->self, "BannerLabel");
     if (d->banner_label) {
         gd_canvas_set_visible(d->banner_label, false);
     }
-    godot_variant ret;
-    g_api->godot_variant_new_nil(&ret);
-    return ret;
 }
 
-godot_variant hud_process(godot_object *instance, void *method_data, void *user_data, int num_args, godot_variant **args) {
-    (void)instance;
-    (void)method_data;
-    (void)num_args;
-    (void)args;
-    HudData *d = (HudData *)user_data;
+static void hud_process(GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
+    (void)p_args;
+    (void)r_ret;
+    HudData *d = (HudData *)p_instance;
 
     if (d->stats_label) {
         char buf[128];
@@ -60,8 +43,28 @@ godot_variant hud_process(godot_object *instance, void *method_data, void *user_
             gd_canvas_set_visible(d->banner_label, false);
         }
     }
+}
 
-    godot_variant ret;
-    g_api->godot_variant_new_nil(&ret);
-    return ret;
+static GDExtensionObjectPtr hud_create(void *p_userdata, GDExtensionBool p_notify_postinitialize) {
+    (void)p_userdata;
+    HudData *d = (HudData *)gd_alloc(sizeof(HudData));
+    d->self = gd_construct_base("CanvasLayer", "GameHUD", d, p_notify_postinitialize);
+    return d->self;
+}
+
+static void hud_free(void *p_userdata, GDExtensionClassInstancePtr p_instance) {
+    (void)p_userdata;
+    gd_free(p_instance);
+}
+
+static GDExtensionClassCallVirtual hud_get_virtual(void *p_userdata, GDExtensionConstStringNamePtr p_name, uint32_t p_hash) {
+    (void)p_userdata;
+    (void)p_hash;
+    if (gd_str_name_eq(p_name, "_ready")) return &hud_ready;
+    if (gd_str_name_eq(p_name, "_process")) return &hud_process;
+    return NULL;
+}
+
+void hud_register(void) {
+    gd_register_class("GameHUD", "CanvasLayer", &hud_create, &hud_free, &hud_get_virtual);
 }
